@@ -130,49 +130,38 @@ function homeTeamName () {
 
 function numPointsScored (playerName) {
     let game = gameObject()
-    for (let gameKey in game) {
-        //  debugger
-        //  console.log(gameKey)
-        let teamObj = game[gameKey]
-        for (let teamKey in teamObj) {
-            // debugger
-            // console.log(teamKey)
-            if (teamKey === "players") {
-                let data = teamObj[teamKey]
-                for (let key in data) {
-                    // debugger
-                    // console.log(key)
-                    if (key === playerName) {
-                        let value = data[key]
-                        // debugger
-                        // console.log(value)
-                        for (let points in value) {
-                            // debugger
-                            // console.log(points)
-                            if (points === 'points') {
-                                let pointsScored = value[points]
-                                return pointsScored
-                            }
+    let homeTeamObj = game.home.players
+    let awayTeamObj = game.away.players
+    for (let player in homeTeamObj) {
 
-                            else {
-
+         if (player === playerName) {
+            
+            let value = homeTeamObj[player]
+            for (let points in value) {
+                            
+                if (points === 'points') {
+                let pointsScored = value[points]
+                return pointsScored
                             }
                         }
                     }
-                    else {
-                    //     console.log('Nope')
-                    }
                 }
 
-            }
-            else {
-                // console.log('Not Even Close')
-            }
-
             
-        }
-    }
-    
+    for (let player in awayTeamObj) {
+       
+        if (player === playerName) {
+            
+            let value = awayTeamObj[player]
+            for (let points in value) {
+                            
+                if (points === 'points') {
+                let pointsScored = value[points]
+                return pointsScored
+                            }
+                        }
+                    }
+                }
 }
 console.log(numPointsScored("Ben Gordon"))
 
