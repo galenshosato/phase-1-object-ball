@@ -18,6 +18,7 @@ function goodPractices() {
 
       // what is 'data' at each loop through out this block?
       // when will the following line of code work and when will it break?
+      
       let data = teamObj.player
       console.log(data)
       for (let key in data) {

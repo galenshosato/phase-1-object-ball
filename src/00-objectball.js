@@ -57,7 +57,7 @@ function gameObject() {
                     "blocks" : 11,
                     "slamDunks" : 1,
                 },
-            }
+            },
 
 
         },
@@ -131,30 +131,50 @@ function homeTeamName () {
 function numPointsScored (playerName) {
     let game = gameObject()
     for (let gameKey in game) {
-        
-         debugger
+        //  debugger
+        //  console.log(gameKey)
         let teamObj = game[gameKey]
         for (let teamKey in teamObj) {
+            // debugger
+            // console.log(teamKey)
+            if (teamKey === "players") {
+                let data = teamObj[teamKey]
+                for (let key in data) {
+                    // debugger
+                    // console.log(key)
+                    if (key === playerName) {
+                        let value = data[key]
+                        // debugger
+                        // console.log(value)
+                        for (let points in value) {
+                            // debugger
+                            // console.log(points)
+                            if (points === 'points') {
+                                let pointsScored = value[points]
+                                return pointsScored
+                            }
 
-             debugger
-            let data = teamObj.players
-            for (let key in data) {
-                
-                debugger
-                let value = data.playerName
-                for (let points in value){
-                    
-                    debugger
-                    console.log(points)
+                            else {
+
+                            }
+                        }
+                    }
+                    else {
+                    //     console.log('Nope')
+                    }
                 }
 
             }
+            else {
+                // console.log('Not Even Close')
+            }
+
+            
         }
     }
     
 }
-
-console.log(numPointsScored("Brook Lopez"))
+console.log(numPointsScored("Ben Gordon"))
 
 // let oo = { foo: 42, bar: 83, "key w/ spaces": true};
 // console.log(oo["foo"])
